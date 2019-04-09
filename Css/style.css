@@ -1,0 +1,84 @@
+.body{
+	font-family: 'Comfortaa'!important;
+}
+
+.login{
+	display: none;
+}
+
+.home{
+	display: none;
+}
+
+.loginGrupos{
+	display: none;
+}
+
+.verifyEmail{
+	display: none;
+}
+
+.terminarReg{
+	display: none;
+}
+
+.load{
+	display: block;
+}
+
+.card-panel{
+	border-radius: 15px;
+	padding-top: 10px!important;
+	padding-left: 15px!important;
+	padding-right: 15px!important;
+	padding-bottom: 10px!important;
+}
+
+.collapsible-header, .collapsible-body, .collapsible, ul.collapsible>li 
+{
+  box-shadow: none!important;
+  background: #fff;
+}
+
+.collapsible-body{
+	margin: 0px!important;
+	padding: 0px!important;
+}
+
+.modal.bottom-sheet{
+	max-height: 90%!important;
+	border-top-left-radius: 20px!important;
+	border-top-right-radius: 20px!important;
+}
+
+.modal-content{
+	padding: 15px!important;
+}
+
+.modal{
+	border-radius: 15px;
+}
+
+.btn{
+	border-radius: 15px;
+	width: 50%;
+}
+
+.title{
+	font-family: 'Comfortaa', cursive;
+}
+
+/* label focus color */
+.input-field input:focus + label {
+    color: #0d47a1!important;
+}
+/* label underline focus color */
+.input-field input:focus {
+    border-bottom: 1px solid #0d47a1!important;
+    box-shadow: 0 1px 0 0 #0d47a1!important;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+    color: #0d47a1!important;
+}
+

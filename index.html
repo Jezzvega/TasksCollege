@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa|Roboto" rel="stylesheet">
+</head>
+<body>
+
+	<!--ALERTAS MIN ANTES DE LA MATERIA-->
+	<!--JAVASCRIPT QUE HAGA SCROLL AUTO AL LLENAR LA TERCERA LINEA DE newTarea-->
+	<!--AGREGAR BOTON DE ADMIN EN EL SIDENAV-->
+	<!--TRAER VALUE DEL DROPDOWN-->
+
+	<!--FLOATING BUTTOM HOME-->
+	<div class="fixed-action-btn home">
+	  <a data-target="modal2" class="modal-trigger btn-floating btn-large white z-depth-3">
+	    <i class="large material-icons blue-text text-accent-2">add</i>
+	  </a>
+	</div>
+
+	<!--CONTAINER LOGIN-->
+	<div class="container login">
+		<div class="row center">
+			<div class="col s12 m4 offset-m4">
+				<div class="row">
+					<div class="col s12">
+						<h5 class="blue-text text-accent-2 title">TasksCollege</h5>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s12">
+						<br>
+						<br>
+						<br>
+						<h3 class="grey-text title">Iniciar Sesión</h3>
+					</div>
+				</div>
+				<div class="row">
+				    <div class="col s12">
+				      <div class="row">
+				        <div class="input-field col s12">
+				          <i class="material-icons prefix grey-text">account_circle</i>
+				          <input id="emailLog" type="email" class="validate" required>
+				          <label for="emailLog">Correo Electrónico</label>
+				        </div>
+				        <div class="input-field col s12">
+				          <i class="material-icons prefix grey-text">lock_outline</i>
+				          <input id="contrasenaLog" type="password" class="validate" required>
+				          <label for="contrasenaLog">Contraseña</label>
+				        </div>
+				        <div class="col s12">
+				        	<span id="errormsgLog" class="red-text"></span>
+				        </div>
+				      </div>
+				    </div>
+				    <div class="col s12">
+						<a id="loginBtn" class="waves-effect waves-light btn blue accent-2">Acceder</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s12">
+						<br>
+						<p>¿No tienes una cuenta?</p>
+						<a data-target="registerModal" class="modal-trigger btn-flat blue-text text-accent-2 waves-effect">Regístrate</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<!--CONTAINER TERMINAR REGISTRO-->
+	<div class="container terminarReg">
+		<div class="row center">
+			<div class="col s12 m4 offset-m4">
+				<div class="row">
+					<div class="col s12">
+						<h5 class="blue-text text-accent-2 title">TasksCollege</h5>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s12">
+						<h4 class="grey-text title">Sólo un paso más...</h4>
+					</div>
+				</div>
+				<div class="row">
+				    <div class="col s12">
+				      <div class="row">
+				        <div class="input-field col s12">
+				          <i class="material-icons prefix grey-text">face</i>
+				          <input id="userNameReg" type="text" class="validate" placeholder="Juan Moreno" required>
+				          <label for="userNameReg">Nombre Completo</label>
+				        </div>
+				        <div class="input-field col s12">
+				          <i class="material-icons prefix grey-text">school</i>
+				          <input type="text" id="userUniReg" class="autocomplete" placeholder="Universidad de ..." required>
+				          <label for="userUniReg">Universidad</label>
+				        </div>
+				        <div class="input-field col s12">
+				          <i class="material-icons prefix grey-text">local_library</i>
+				          <input id="userCarreraReg" type="text" class="validate" placeholder="Ing. en ..." required>
+				          <label for="userCarreraReg">Carrera</label>
+				        </div>
+				        <div class="col s12">
+				        	<span id="errormsgLog" class="red-text"></span>
+				        </div>
+				      </div>
+				    </div>
+				    <div class="col s12">
+						<a id="loginBtn" class="waves-effect waves-light btn blue accent-2">Listo!</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<!--CONTAINER VERIFICAR CORREO-->
+	<div class="container verifyEmail">
+		<div class="row center">
+			<div class="col s12 m4 offset-m4">
+				<div class="row">
+					<div class="col s12">
+						<h5 class="blue-text text-accent-2 title">TasksCollege</h5>
+					</div>
+				</div>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<div class="preloader-wrapper big active">
+				    <div class="spinner-layer spinner-blue-only">
+				      <div class="circle-clipper left">
+				        <div class="circle"></div>
+				      </div><div class="gap-patch">
+				        <div class="circle"></div>
+				      </div><div class="circle-clipper right">
+				        <div class="circle"></div>
+				      </div>
+				    </div>
+				</div>
+				<div class="row center">
+					<div class="col s12">
+						<h6 class="grey-text">Verifica tu Correo Electrónico...</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<!--CONTAINER LOAD-->
+	<div class="container load">
+		<div class="row center">
+			<div class="col s12 m4 offset-m4">
+				<div class="row">
+					<div class="col s12">
+						<h5 class="blue-text text-accent-2 title">TasksCollege</h5>
+					</div>
+				</div>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<div class="preloader-wrapper big active">
+				    <div class="spinner-layer spinner-blue-only">
+				      <div class="circle-clipper left">
+				        <div class="circle"></div>
+				      </div><div class="gap-patch">
+				        <div class="circle"></div>
+				      </div><div class="circle-clipper right">
+				        <div class="circle"></div>
+				      </div>
+				    </div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<!--REGISTRO MODAL-->
+	<div id="registerModal" class="modal">
+	    <div class="modal-content">
+			<div class="row">
+				<div class="col s12 center">
+					<h4 class="title">Registro</h4>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+				  <input id="newUserMail" type="email" class="validate" placeholder="Ejm: Juan@mail.com" required>
+				  <label for="newUserMail">Correo Electrónico</label>
+				</div>
+				<div class="input-field col s12">
+				  <input id="newUserPassword" type="text" class="validate" required>
+				  <label for="newUserPassword">Nueva Contraseña</label>
+				</div>
+				<div class="col s12">
+				    <span id="errormsg" class="red-text"></span>
+				</div>
+				<div class="col s12 center">
+					<a id="registerBtn" class="btn blue accent-2">Enviar</a>
+					<p class="grey-text" style="margin-bottom: 0px!important;">Al registrarte aceptas nuestras <b>Condiciones </b>y <b>Políticas de Privacidad.</b></p>
+				</div>
+			</div>
+	    </div>
+	</div>
+
+	<!--CREATE GRUPOS LOGIN-->
+	<div class="container loginGrupos">
+		<div class="row center">
+			<div class="col s12 m4 offset-m4">
+				<div class="row">
+					<div class="col s12">
+						<h5 class="blue-text text-accent-2 title">TasksCollege</h5>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s12">
+						<h3 class="grey-text title">Bienvenido</h3>
+						<br>
+						<br>
+					</div>
+				</div>
+				<form class="row">
+				    <div class="col s12">
+				      <div class="row">
+				        <div class="col s12">
+				        	<p>Ingresa tu Código de Grupo:</p>
+				        </div>
+				        <div class="input-field col s12">
+				          <i class="material-icons prefix grey-text">people</i>
+				          <input id="groupCode" type="text" class="validate">
+				          <label for="groupCode">Código de Grupo:</label>
+				        </div>
+				      </div>
+				    </div>
+				    <div class="col s12">
+						<a class="waves-effect waves-light btn blue accent-2">Entrar</a>
+					</div>
+				</form>
+				<div class="row">
+					<div class="col s12">
+						<br>
+						<br>
+						<br>
+						<br>
+						<p>¿No tienes grupo, ni amigos?</p>
+						<a href="" class="btn-flat blue-text text-accent-2 waves-effect">Crear Nuevo Grupo</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--CONTAINER HOME-->
+	<div class="container home">
+		<div class="row">
+			<div class="col s12">
+				<div class="row">
+					<br>
+					<div class="col s8">
+						<h5 class="blue-text text-accent-2 title">TasksCollege</h5>
+					</div>
+					<div class="col s4"><a data-target="slide-out" class="black-text sidenav-trigger"><h5><i class="right small material-icons">menu</i></h5></a></div>
+				</div>
+				<div class="row" id="postList">
+					<div class="col s12">
+						<div data-target="modal1" class="card-panel white modal-trigger">
+					        <span class="grey-text"><i class="material-icons left">account_circle</i>Jose M.</span><span class="right"><b class="blue-text text-accent-2">Tarea</b></span>
+					        <br>
+					        <span><h6><b class="black-text">Desarrollo de Software II</b></h6></span>
+					        <span class="grey-text">31-12-19</span>
+					    </div>
+					</div>
+					<div class="col s12">
+						<div data-target="modal1" class="card-panel white modal-trigger">
+					        <span class="grey-text"><i class="material-icons left">account_circle</i>Juan C.</span><span class="right"><b class="blue-text text-accent-2">Examen</b></span>
+					        <br>
+					        <span><h6><b class="black-text-text">Matemáticas </b><i class="tiny red-text material-icons">error</i></h6></span>
+					        <span class="grey-text">31-12-19</span>
+					    </div>
+					</div>
+				</div>
+				<!--<div class="row">
+					<div class="col s12">
+						<ul class="collapsible expandable">
+							<li class="active">
+							    <div class="collapsible-header"><i class="material-icons blue-text text-accent-2">date_range</i><b>hoy</b><span class="red new badge">2</span></div>
+							    <div class="collapsible-body">
+							    	<div class="collection">
+								        <a data-target="modal1" class="collection-item modal-trigger">
+								        	<b class="black-text">Matematicas</b><span class="right grey-text">Examen</span>
+								        </a>
+								        <a href="#!" class="collection-item"><b class="black-text">Software</b><span class="right grey-text">Tarea</span></a>
+								    </div>
+							    </div>
+							</li>
+							<li>
+							    <div class="collapsible-header"><i class="material-icons blue-text text-accent-2">date_range</i><b>Semana</b><span class="red new badge">5</span></div>
+							    <div class="collapsible-body">
+							    	<div class="collection">
+								        <a data-target="modal1" class="center collection-item modal-trigger"><b class="black-text">No hay tareas</b></a>
+								    </div>
+							    </div>
+							</li>
+							<li>
+							    <div class="collapsible-header"><i class="material-icons blue-text text-accent-2">date_range</i><b>Mes</b><span class="red new badge">10</span></div>
+							    <div class="collapsible-body">
+							    	<div class="collection">
+								        <a data-target="modal1" class="center collection-item modal-trigger"><b class="black-text">No hay tareas</b></a>
+								    </div>
+							    </div>
+							</li>
+						</ul>
+					</div>
+				</div>-->	
+			</div>
+		</div>
+	</div>
+
+	<!--SIDENAV-->
+	<ul id="slide-out" class="sidenav">
+	    <li><div class="user-view">
+	      <div class="background blue accent-2">
+	      </div>
+	      <a><i class="material-icons white-text left">account_circle</i><span class="userMailTitle white-text email">User@mail.com</span></a>
+	    </div></li>
+	    <li class="no-padding">
+	        <ul class="collapsible collapsible-accordion">
+	          <li>
+	            <a class="collapsible-header"><i class="material-icons blue-text text-accent-2">access_time</i>Horario de hoy <i class="right material-icons">arrow_drop_down</i></a>
+	            <div class="collapsible-body">
+	              <ul>
+	                <li><a href="#!">Matematicas<span class="right grey-text">12:30 / 01:45</span></a></li>
+	                <li><a href="#!">Software III<span class="right grey-text">02:00 / 02:45</span></a></li>
+	              </ul>
+	            </div>
+	          </li>
+	        </ul>
+	    </li>
+
+	    <li><div class="divider"></div></li>
+	   	<li><a id="copyGrpCodeBtn"><i class="material-icons blue-text text-accent-2">content_copy</i>Código de Grupo</a></li>
+	    <li><a id="salirBtn"><i class="material-icons red-text">exit_to_app</i>Cerrar Sesión</a></li>
+	    
+	</ul>
+
+	<!--MODAL INFO TASK-->
+	<div id="modal1" class="modal bottom-sheet">
+	    <div class="modal-content">
+	      <div class="row">
+	      	<div class="col s12">
+	      		<h3 class="blue-text text-accent-2">Examen</h3>
+	      		<p><b>Materia: </b><span>Mate</span></p>
+	      		<p><b>Fecha: </b><span>31/12/99</span></p>
+	      	</div>
+	      	<div class=" col s12">
+	      		<div class="divider"></div>
+	      	</div>
+	      	<div class="col s12">
+	      		<p><b>Detalles:</b></p>
+	      		<p>
+	      			Loremsefjsdsdnsdsdvksmd;vsdmv;sm
+	      			sdvsdvd
+	      			sdvsd
+	      		</p>
+	      	</div>
+	      </div>
+	    </div>
+	    <div class="modal-footer">
+	    	<a href="#!" class="left btn-flat blue-text text-accent-2"><i class="left material-icons">check</i>Completado</a>
+	      	<a href="#!" class="modal-close waves-effect waves-green btn-flat">Atrás</a>
+	    </div>
+	</div>
+
+	<!--MODAL NEW TASK-->
+	<div id="modal2" class="modal">
+	    <div class="modal-content">
+			<div class="row">
+				<div class="col s12 center">
+					<h4 class="title">Nueva tarea</h4>
+				</div>
+			</div>
+			<form class="row" method="POST" onsubmit="return nuevaTarea()">
+				<div class="input-field col s12">
+				    <select id="materiaSelect">
+				      <option value="" disabled selected>Materia...</option>
+				      <option value="0">Matematicas</option>
+				      <option value="1">Desarrollo de Software II</option>
+				      <option value="2">Ingles</option>
+				    </select>
+				    <label>Materia</label>
+				</div>
+				<div class="input-field col s12">
+				    <select id="tipoSelect">
+				      <option value="" disabled selected>Tipo...</option>
+				      <option value="0">Examen</option>
+				      <option value="1">Examen Final</option>
+				      <option value="2">Tarea</option>
+				      <option value="3">Charla</option>
+				      <option value="4">Reunion</option>
+				      <option value="5">Quiz</option>
+				    </select>
+				    <label>Tipo</label>
+				</div>
+				<div class="input-field col s12">
+					<input id="fechaNewTask" type="text" placeholder="Fecha..." class="datepicker validate" required>
+				</div>
+				<div class="input-field col s12">
+					<p>
+				      <label>
+				        <input id="checkNewTask" type="checkbox" class="filled-in"/>
+				        <span class="black-text">Es Importante?</span>
+				      </label>
+				    </p>
+				</div>
+				<div class="input-field col s12">
+			        <textarea id="detallesNewTask" class="materialize-textarea validate" type="text" data-length="120" required></textarea>
+			        <label for="detallesNewTask">Detalles</label>
+			    </div>
+			    <div class="col s12 center">
+					<button type="submit" class="btn blue accent-2">Guardar</button>
+				</div>
+			</form>
+	    </div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ 	<script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-auth.js"></script>
+	<script>
+		  // Initialize Firebase
+		  var config = {
+		    apiKey: "AIzaSyDKLpLxICIdtup8PIPDxY2X7WDtvqKpWg4",
+		    authDomain: "taskscollege-87d1a.firebaseapp.com",
+		    databaseURL: "https://taskscollege-87d1a.firebaseio.com",
+		    projectId: "taskscollege-87d1a",
+		    storageBucket: "taskscollege-87d1a.appspot.com",
+		    messagingSenderId: "810890591011"
+		  };
+		  firebase.initializeApp(config);
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script type="text/javascript" src="js/materialize.js"></script>
+	<script type="text/javascript" src="js/home.js"></script>
+	<script type="text/javascript" src="js/registro.js"></script>
+	<script type="text/javascript" src="js/ingreso.js"></script>
+	<script type="text/javascript" src="js/posts.js"></script>
+
+</body>
+
+</html>
