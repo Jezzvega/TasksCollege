@@ -95,6 +95,10 @@ $("#registerBtn").on('click' , function(){
 
 });
 
+$('#reenvioMsg').on('click','.reenvioEmailBtn', function(){
+  verificarCorreo();
+});
+
 function verificarCorreo(){
   var user = firebase.auth().currentUser;
   user.sendEmailVerification().then(function() {
@@ -113,6 +117,7 @@ window.onload = function(){
 
 //Funcion que verifica el estado del usuario en el sistema y puede obtener sus datos
 //Cada vez que se ejecute nuestro sistema esta funcion se va a ejecutar automaticamente, ya que esta declarada al final para su ejecucion
+
 function observador(){
   firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
@@ -133,11 +138,12 @@ function observador(){
     
     console.log('No existe usuario activo');
     
-    $('.login').css("display", "block");
+    $('.terminarReg').css("display", "none");
     $('.home').css("display", "none");
     $('.loginGrupos').css("display", "none");
     $('.load').css("display", "none");
     $('.verifyEmail').css("display", "none");
+    $('.login').css("display", "block");
     // User is signed out.
     // ...
   }
@@ -161,10 +167,10 @@ function mostrarContenido(user){
     `;*/
     $('.login').css("display", "none");
     $('.home').css("display", "none");
-    $('.terminarReg').css("display", "block");
     $('.loginGrupos').css("display", "none");
     $('.load').css("display", "none");
     $('.verifyEmail').css("display", "none");
+    $('.terminarReg').css("display", "block");
 
   }else{
     
@@ -174,6 +180,21 @@ function mostrarContenido(user){
     $('.loginGrupos').css("display", "none");
     $('.load').css("display", "none");
     $('.verifyEmail').css("display", "block");
+    reenviarCorreo();
   }
 
+}
+
+function reenviarCorreo(){
+  
+  var time = 15;
+  
+  var count = setInterval(function(){
+    time -= 1;
+    console.log(time);
+    if(time == 0){
+      $('#reenvioMsg').html('¿No haz recibido ningun correo? <a class="reenvioEmailBtn btn-flat blue-text text-accent-2">Reenviar</a>');
+      clearInterval(count);
+    }
+  },1000);
 }

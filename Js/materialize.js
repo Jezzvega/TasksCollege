@@ -29,45 +29,40 @@
 
         $('input.autocomplete').autocomplete({
           data: {
-            "Universidad Técnologica de Panamá": null,
-            "Universidad de Panamá": null
-
-            /*
-             UMECIT
-             Universidad de Panamá (UP)
-             Universidad Latina de Panamá
-             Universidad Interamericana de Panamá
-             Universidad del Arte GANEXA
-             Universidad Tecnológica de Panamá
-             ISAE UNIVERSIDAD
-             Universidad Católica Santa María La Antigua
-             Universidad de Santander Panamá
-             Columbus University
-             IBI Universidad Bancaria
-             Universidad Especializada de las Américas
-             Universidad Politécnica Internacional
-             Universidad Alta Dirección UAD
-             Instituto de Estudios Superiores de Administración IESA
-             Quality Leadership University QLU
-             Florida State University
-             Universidad del Istmo Panamá
-             Universidad Interamericana de Puerto Rico
-             Universidad Americana (UAM)
-             Universidad Cristiana de Panamá
-             Universidad Internacional de Ciencia y Tecnología UNICYT
-             Universidad Latinoamericana de Comercio Exterior ULACEX
-             Instituto Superior de Ingeniería
-             Instituto Superior Politécnico de América
-             Universidad de Cartago
-             Universidad Hispanoamericana de Panamá
-             Universidad Marítima Internacional de Panamá
-             Universidad Autónoma de Chiriquí
-             Universidad Abierta y a Distancia de Panamá
-             INCAE BUSINESS SCHOOL
-             Universidad Especializada del Contador Público Autorizado UNESCPA
-             Escuela de Arquitectura y Diseño de América Latina y el Caribe ISTHMUS
-             Universidad Tecnológica Oteima
-            */
+            "UMECIT": null,
+            "Universidad de Panamá (UP)": null,
+            "Universidad Latina de Panamá (ULAT)": null,
+            "Universidad Interamericana de Panamá": null,
+            "Universidad del Arte GANEXA": null,
+            "Universidad Tecnológica de Panamá (UTP)": null,
+            "ISAE UNIVERSIDAD": null,
+            "Universidad Católica Santa María La Antigua": null,
+            "Universidad de Santander Panamá": null,
+            "Columbus University": null,
+            "IBI Universidad Bancaria": null,
+            "Universidad Especializada de las Américas": null,
+            "Universidad Politécnica Internacional": null,
+            "Universidad Alta Dirección UAD": null,
+            "Instituto de Estudios Superiores de Administración IESA": null,
+            "Quality Leadership University QLU": null,
+            "Florida State University": null,
+            "Universidad del Istmo Panamá": null,
+            "Universidad Interamericana de Puerto Rico": null,
+            "Universidad Americana (UAM)": null,
+            "Universidad Cristiana de Panamá": null,
+            "Universidad Internacional de Ciencia y Tecnología UNICYT": null,
+            "Universidad Latinoamericana de Comercio Exterior ULACEX": null,
+            "Instituto Superior de Ingeniería": null,
+            "Instituto Superior Politécnico de América": null,
+            "Universidad de Cartago": null,
+            "Universidad Hispanoamericana de Panamá": null,
+            "Universidad Marítima Internacional de Panamá": null,
+            "Universidad Autónoma de Chiriquí": null,
+            "Universidad Abierta y a Distancia de Panamá": null,
+            "INCAE BUSINESS SCHOOL": null,
+            "Universidad Especializada del Contador Público Autorizado UNESCPA": null,
+            "Escuela de Arquitectura y Diseño de América Latina y el Caribe ISTHMUS": null,
+            "Universidad Tecnológica Oteima": null
           },
         });
 
