@@ -13,9 +13,9 @@ $("#registerBtn").on('click' , function(){
       $(".helper-text").remove();
 
       $("#newUserMail").after(
-      
+
         '<span class="helper-text red-text">Escriba correctamente el correo.</span>'
-      
+
       );
 
       return false;
@@ -27,7 +27,7 @@ $("#registerBtn").on('click' , function(){
     $(".helper-text").remove();
 
     $("#newUserMail").after(
-      
+
       '<span class="helper-text red-text">Este campo es obligatorio.</span>'
     );
 
@@ -48,9 +48,9 @@ $("#registerBtn").on('click' , function(){
       $(".helper-text").remove();
 
       $("#newUserPassword").after(
-        
+
         '<span class="helper-text red-text">No se permiten caracteres especiales.</span>'
-        
+
       );
 
       return false;
@@ -63,7 +63,7 @@ $("#registerBtn").on('click' , function(){
     $(".helper-text").remove();
 
     $("#newUserPassword").after(
-      
+
       '<span class="helper-text red-text">Este campo es obligatorio.</span>'
     );
 
@@ -72,7 +72,7 @@ $("#registerBtn").on('click' , function(){
   }
 
     firebase.auth().createUserWithEmailAndPassword(email, contrasena)
-    
+
     .then(function(){
       verificarCorreo();
     })
@@ -82,7 +82,7 @@ $("#registerBtn").on('click' , function(){
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-      
+
       if (errorCode == 'auth/weak-password') {
             errormsg.innerHTML = "";
             errormsg.innerHTML = 'Error: La contraseña es muy debil.';
@@ -135,9 +135,9 @@ function observador(){
 
     // ...
   } else {
-    
+
     console.log('No existe usuario activo');
-    
+
     $('.terminarReg').css("display", "none");
     $('.home').css("display", "none");
     $('.loginGrupos').css("display", "none");
@@ -173,7 +173,7 @@ function mostrarContenido(user){
     $('.terminarReg').css("display", "block");
 
   }else{
-    
+
     $('.modal').modal('close');
     $('.login').css("display", "none");
     $('.home').css("display", "none");
@@ -186,9 +186,9 @@ function mostrarContenido(user){
 }
 
 function reenviarCorreo(){
-  
+
   var time = 15;
-  
+
   var count = setInterval(function(){
     time -= 1;
     console.log(time);
