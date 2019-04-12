@@ -119,69 +119,93 @@ window.onload = function(){
 //Cada vez que se ejecute nuestro sistema esta funcion se va a ejecutar automaticamente, ya que esta declarada al final para su ejecucion
 
 function observador(){
+  
   firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    console.log('Si existe usuario activo');
-    //Funcion para mostrar contenido al usuario logueado
-    mostrarContenido(user);
-    // User is signed in.
-    var displayName = user.displayName;
-    var email = user.email;
-    var emailVerified = user.emailVerified;
-    var photoURL = user.photoURL;
-    var isAnonymous = user.isAnonymous;
-    var uid = user.uid;
-    var providerData = user.providerData;
+    
+    if (user) {
+      
+      console.log('Si existe usuario activo');
+      //Funcion para mostrar contenido al usuario logueado
+      mostrarContenido(user);
+      // User is signed in.
+      var displayName = user.displayName;
+      var email = user.email;
+      var emailVerified = user.emailVerified;
+      var photoURL = user.photoURL;
+      var isAnonymous = user.isAnonymous;
+      var uid = user.uid;
+      var providerData = user.providerData;
 
-    // ...
-  } else {
+      // ...
+    } else {
 
-    console.log('No existe usuario activo');
+      console.log('No existe usuario activo');
 
-    $('.terminarReg').css("display", "none");
-    $('.home').css("display", "none");
-    $('.loginGrupos').css("display", "none");
-    $('.load').css("display", "none");
-    $('.verifyEmail').css("display", "none");
-    $('.login').css("display", "block");
-    // User is signed out.
-    // ...
-  }
-});
+      $('.terminarReg').css("display", "none");
+      $('.home').css("display", "none");
+      $('.loginGrupos').css("display", "none");
+      $('.load').css("display", "none");
+      $('.verifyEmail').css("display", "none");
+      $('.terminarReg').css("display", "none");
+      $('.login').css("display", "block");
+      // User is signed out.
+      // ...
+    }
+
+  });
+  
 }
 
 //Funcion que llena el div en el index solo si el usuario existe y es activado o logueado
 function mostrarContenido(user){
-  var user = user;
 
-  if(user.emailVerified){
-    /*contenido.innerHTML = '';
-    contenido.innerHTML =  `
-      <p>Bienvenido!</p>
-      <input type="text" placeholder="Nombre Completo" name="" value="" id="nombre" required>
-      <input type="text" placeholder="Universidad" name="" value="" id="universidad" required>
-      <input type="text" placeholder="Carrera" name="" value="" id="carrera" required>
+  var usersRef = firebase.database().ref('/users/' + user.uid);
 
+  usersRef.on('value', function(snapshot) {
+    
+    var statusReg = snapshot.val().statusReg;
+    var statusGroup = snapshot.val().statusGroup;
 
-      <button type="button" onclick="cerrarSesion()" >Cerrar sesion</button>
-    `;*/
-    $('.login').css("display", "none");
-    $('.home').css("display", "none");
-    $('.loginGrupos').css("display", "none");
-    $('.load').css("display", "none");
-    $('.verifyEmail').css("display", "none");
-    $('.terminarReg').css("display", "block");
+    if(!user.emailVerified){
+    
+      $('.modal').modal('close');
+      $('.login').css("display", "none");
+      $('.home').css("display", "none");
+      $('.loginGrupos').css("display", "none");
+      $('.load').css("display", "none");
+      $('.terminarReg').css("display", "none");
+      $('.verifyEmail').css("display", "block");
+      reenviarCorreo();
 
-  }else{
+    }else if(statusReg == 0){
 
-    $('.modal').modal('close');
-    $('.login').css("display", "none");
-    $('.home').css("display", "none");
-    $('.loginGrupos').css("display", "none");
-    $('.load').css("display", "none");
-    $('.verifyEmail').css("display", "block");
-    reenviarCorreo();
-  }
+      $('.login').css("display", "none");
+      $('.home').css("display", "none");
+      $('.loginGrupos').css("display", "none");
+      $('.load').css("display", "none");
+      $('.verifyEmail').css("display", "none");
+      $('.terminarReg').css("display", "block");
+
+    }else if(statusGroup == 0){
+
+      $('.login').css("display", "none");
+      $('.home').css("display", "none");
+      $('.loginGrupos').css("display", "block");
+      $('.load').css("display", "none");
+      $('.verifyEmail').css("display", "none");
+      $('.terminarReg').css("display", "none");
+
+    }else{
+
+      $('.login').css("display", "none");
+      $('.home').css("display", "block");
+      $('.loginGrupos').css("display", "none");
+      $('.load').css("display", "none");
+      $('.verifyEmail').css("display", "none");
+      $('.terminarReg').css("display", "none");
+
+    }
+  });
 
 }
 
@@ -193,6 +217,7 @@ function reenviarCorreo(){
     time -= 1;
     console.log(time);
     if(time == 0){
+      observador();
       $('#reenvioMsg').html('¿No haz recibido ningun correo? <a class="reenvioEmailBtn btn-flat blue-text text-accent-2">Reenviar</a>');
       clearInterval(count);
     }

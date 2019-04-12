@@ -1,65 +1,62 @@
-var database = firebase.database();
-
-//REFERENCIAS A FIREBASE
-
-var refUsers = firebase.database().ref('userInfo');
-
-
-    $("#terminarRegBtn").on('click',function(){
-      var addNewUser = refUsers.push();
-
+$("#terminarRegBtn").on('click',function(){
+      
       var user = firebase.auth().currentUser;
+      
       var uid = user.uid;
       var emailUserNew = user.email;
+      
       var nombUserNew = $("#userNameReg").val();
       var univUserNew = $("#userUniReg").val();
       var carrUserNew = $("#userCarreraReg").val();
-//Validacion nombre
+      
+      //Validacion nombre
       if (nombUserNew != ""){
 
-    var expresion = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]*$/;
+        var expresion = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]*$/;
 
-    if (!expresion.test(nombUserNew)) {
+          if (!expresion.test(nombUserNew)) {
 
-      $(".helper-text").remove();
+            $(".helper-text").remove();
 
-      $("#userNameReg").after(
+            $("#userNameReg").after(
 
-        '<span class="helper-text red-text">No se permiten caracteres especiales.</span>'
+              '<span class="helper-text red-text">No se permiten caracteres especiales.</span>'
 
-      );
+            );
 
-      return false;
+            return false;
 
-    }
+          }
 
 
-  }else{
+      }else{
 
-    $(".helper-text").remove();
+        $(".helper-text").remove();
 
-    $("#userNameReg").after(
+        $("#userNameReg").after(
 
-      '<span class="helper-text red-text">Este campo es obligatorio.</span>'
-    );
+          '<span class="helper-text red-text">Este campo es obligatorio.</span>'
+        );
 
-    return false;
+        return false;
 
-  }
-  //Validacion Universidad
-  if (univUserNew == ""){
+      }
+      
+      //Validacion Universidad
+      if (univUserNew == ""){
 
-      $(".helper-text").remove();
+          $(".helper-text").remove();
 
-      $("#userUniReg").after(
+          $("#userUniReg").after(
 
-        '<span class="helper-text red-text">Este campo es obligatorio.</span>'
-      );
+            '<span class="helper-text red-text">Este campo es obligatorio.</span>'
+          );
 
-      return false;
+          return false;
 
-    }
-    if (carrUserNew == ""){
+      }
+      
+      if (carrUserNew == ""){
 
         $(".helper-text").remove();
 
@@ -71,19 +68,18 @@ var refUsers = firebase.database().ref('userInfo');
         return false;
 
       }
-          addNewUser.set({
 
-          	userId: uid,
-          	nombUser: nombUserNew,
-            emailUser: emailUserNew,
-          	univUser: univUserNew,
-          	carrUser: carrUserNew,
-          	statusReg: 1,
-            statusGroup: 0
+      firebase.database().ref('users/' + uid).set({
 
-          });
+        nombUser: nombUserNew,
+        emailUser: emailUserNew,
+        univUser: univUserNew,
+        carrUser: carrUserNew,
+        statusReg: 1,
+        statusGroup: 0
 
+      });
 
-      console.log(user.email);
+      observador();
 
-    });
+});
