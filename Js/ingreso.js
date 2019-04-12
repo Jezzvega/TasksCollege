@@ -72,9 +72,13 @@ $('#loginBtn').on('click', function(){
     var errorCode = error.code;
     var errorMessage = error.message;
 
-    errormsg.innerHTML = "";
-    errormsg.innerHTML = errorMessage;
-    // ...
+    if (errorCode == 'auth/user-not-found') {
+        errormsg.innerHTML = "";
+        errormsg.innerHTML = 'Error: Este usuario no está registrado.';
+    } else {
+        errormsg.innerHTML = "";
+        errormsg.innerHTML = errorMessage;
+    }
     });
 
     return true;
