@@ -161,12 +161,7 @@ function mostrarContenido(user){
 
   var usersRef = firebase.database().ref('/users/' + user.uid);
 
-  usersRef.on('value', function(snapshot) {
-    
-    var statusReg = snapshot.val().statusReg;
-    var statusGroup = snapshot.val().statusGroup;
-
-    if(!user.emailVerified){
+  if(!user.emailVerified){
     
       $('.modal').modal('close');
       $('.login').css("display", "none");
@@ -177,35 +172,50 @@ function mostrarContenido(user){
       $('.verifyEmail').css("display", "block");
       reenviarCorreo();
 
-    }else if(statusReg == 0){
+  }else{
+    
+    usersRef.on('value', function(snapshot) {
+      
+	  if(snapshot.val() == null){
+	  	var statusReg = 0;
+	    var statusGroup = 0;
+	  }else{
+	  	var statusReg = snapshot.val().statusReg;
+	    var statusGroup = snapshot.val().statusGroup;
+	  }
 
-      $('.login').css("display", "none");
-      $('.home').css("display", "none");
-      $('.loginGrupos').css("display", "none");
-      $('.load').css("display", "none");
-      $('.verifyEmail').css("display", "none");
-      $('.terminarReg').css("display", "block");
+      if(statusReg == 0){
 
-    }else if(statusGroup == 0){
+        $('.login').css("display", "none");
+        $('.home').css("display", "none");
+        $('.loginGrupos').css("display", "none");
+        $('.load').css("display", "none");
+        $('.verifyEmail').css("display", "none");
+        $('.terminarReg').css("display", "block");
 
-      $('.login').css("display", "none");
-      $('.home').css("display", "none");
-      $('.loginGrupos').css("display", "block");
-      $('.load').css("display", "none");
-      $('.verifyEmail').css("display", "none");
-      $('.terminarReg').css("display", "none");
+      }else if(statusGroup == 0){
 
-    }else{
+        $('.login').css("display", "none");
+        $('.home').css("display", "none");
+        $('.loginGrupos').css("display", "block");
+        $('.load').css("display", "none");
+        $('.verifyEmail').css("display", "none");
+        $('.terminarReg').css("display", "none");
 
-      $('.login').css("display", "none");
-      $('.home').css("display", "block");
-      $('.loginGrupos').css("display", "none");
-      $('.load').css("display", "none");
-      $('.verifyEmail').css("display", "none");
-      $('.terminarReg').css("display", "none");
+      }else{
 
-    }
-  });
+        $('.login').css("display", "none");
+        $('.home').css("display", "block");
+        $('.loginGrupos').css("display", "none");
+        $('.load').css("display", "none");
+        $('.verifyEmail').css("display", "none");
+        $('.terminarReg').css("display", "none");
+
+      }
+
+    });
+
+  }  
 
 }
 
