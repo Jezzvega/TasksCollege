@@ -67,6 +67,8 @@ $("#newGroupBtn").on('click', function(){
 
     }
 
+    var uid = firebase.auth().currentUser.uid;
+
     firebase.database().ref('grupos').push().set({
 
         nombGrp: grpName,
@@ -74,8 +76,12 @@ $("#newGroupBtn").on('click', function(){
 
     });
 
-    
-    var uid = firebase.auth().currentUser.uid;
+    firebase.database().ref('users/' + uid).update({
+
+        codeGrp: grpCode
+
+    });
+
 
 	firebase.database().ref('users/' + uid).update({
 
@@ -84,5 +90,53 @@ $("#newGroupBtn").on('click', function(){
 	});    
 
     observador();
+
+});
+
+//Add new grupo btn
+$('#addNewGroupBtn').on('click', function(){
+
+    var addGrpCode = $('#groupCode').val();
+
+    var uid = firebase.auth().currentUser.uid;
+
+    var x = 0;
+
+    firebase.database().ref('grupos')
+        .orderByChild('codeGrp')
+        .equalTo(addGrpCode)
+        .on('child_added', function(snapshot) {
+            
+            var codeGrupo = snapshot.val().codeGrp;
+
+            firebase.database().ref('users/' + uid).update({
+
+                codeGrp: codeGrupo
+
+            });
+
+            firebase.database().ref('users/' + uid).update({
+
+                statusGroup: 1
+
+            });
+
+            x = 1;
+
+        }
+    );
+
+    if(x == 0){
+
+        $(".helper-text").remove();
+
+        $("#groupCode").after(
+
+          '<span class="helper-text red-text">Error: No se encuentran grupos.</span>'
+        );
+
+        return false;
+
+    }
 
 });
