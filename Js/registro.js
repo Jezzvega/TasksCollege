@@ -197,19 +197,20 @@ function mostrarContenido(user){
 
         $('.login').css("display", "none");
         $('.home').css("display", "none");
-        $('.loginGrupos').css("display", "block");
         $('.load').css("display", "none");
         $('.verifyEmail').css("display", "none");
         $('.terminarReg').css("display", "none");
+        $('.loginGrupos').css("display", "block");
 
       }else{
 
+        $('.modal').modal('close');
         $('.login').css("display", "none");
-        $('.home').css("display", "block");
         $('.loginGrupos').css("display", "none");
         $('.load').css("display", "none");
         $('.verifyEmail').css("display", "none");
         $('.terminarReg').css("display", "none");
+        $('.home').css("display", "block");
 
       }
 
@@ -221,11 +222,10 @@ function mostrarContenido(user){
 
 function reenviarCorreo(){
 
-  var time = 15;
+  var time = 60;
 
   var count = setInterval(function(){
     time -= 1;
-    console.log(time);
     if(time == 0){
       observador();
       $('#reenvioMsg').html('¿No haz recibido ningun correo? <a class="reenvioEmailBtn btn-flat blue-text text-accent-2">Reenviar</a>');
